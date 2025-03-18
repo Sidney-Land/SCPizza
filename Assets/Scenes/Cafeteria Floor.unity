@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 1737082676}
+  m_Follow: {fileID: 5870892450150540079}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -405,11 +405,6 @@ Transform:
   - {fileID: 1686049701}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1399233191 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5662015109375571975, guid: a803c1a44fe88b7418de43d0c7ca8d00, type: 3}
-  m_PrefabInstance: {fileID: 5870892450150540078}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1686049700
 GameObject:
   m_ObjectHideFlags: 3
@@ -420,7 +415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1686049701}
   - component: {fileID: 1686049703}
-  - component: {fileID: 1686049702}
+  - component: {fileID: 1686049704}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -443,7 +438,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1324565912}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1686049702
+--- !u!114 &1686049703
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686049700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1686049704
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -459,8 +466,8 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_XDamping: 1
-  m_YDamping: 1
+  m_XDamping: 2
+  m_YDamping: 2
   m_ZDamping: 1
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
@@ -469,7 +476,7 @@ MonoBehaviour:
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
-  m_UnlimitedSoftZone: 0
+  m_UnlimitedSoftZone: 1
   m_SoftZoneWidth: 0.8
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
@@ -486,23 +493,6 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
---- !u!114 &1686049703
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1686049700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1737082676 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8223789856104251316, guid: a803c1a44fe88b7418de43d0c7ca8d00, type: 3}
-  m_PrefabInstance: {fileID: 5870892450150540078}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5870892450150540078
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -512,9 +502,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1292142605843898028, guid: a803c1a44fe88b7418de43d0c7ca8d00, type: 3}
-      propertyPath: pizzaPlatter
-      value: 
-      objectReference: {fileID: 1399233191}
+      propertyPath: lookDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8223789856104251316, guid: a803c1a44fe88b7418de43d0c7ca8d00, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -564,6 +554,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a803c1a44fe88b7418de43d0c7ca8d00, type: 3}
+--- !u!4 &5870892450150540079 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3117178991870441417, guid: a803c1a44fe88b7418de43d0c7ca8d00, type: 3}
+  m_PrefabInstance: {fileID: 5870892450150540078}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

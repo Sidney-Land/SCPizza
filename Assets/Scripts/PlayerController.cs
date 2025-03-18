@@ -4,41 +4,47 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // integer used for the left mouse button
-    private const int LEFT_MOUSE = 0;
-
     // Magnitude of Player's velocity in units per second
     public float moveSpeed;
 
     // Direction of Player's velocity
     private Vector2 moveDirection = new Vector2();
 
-    // Reference to rigidbody for movement
-    public Rigidbody2D rb;
+    // Furthest distance away from Player camera can look
+    public float lookDistance;
 
+    // Reference to Pizza Platter where pizza is tossed
     public Transform pizzaPlatter;
 
+    // Reference to (invisible) object controlling camera movment
+    public Transform camCenter;
+
     // Pizza to be thrown
-    public GameObject cheesePizza; 
+    public GameObject cheesePizza;
+
+    // Reference to rigidbody for movement
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Upon click
-        if (Input.GetMouseButtonDown(LEFT_MOUSE))
-        {
-            // Get where Player clicked in world coordinates
-            Vector2 tossPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        // Get where Player's mouse is (relative to transform.position) and direction in local coordinates
+        Vector2 mouseRelPos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position;
 
-            // Get the direction pizza will fly towards to determine its rotation
-            Vector2 tossDirection = (tossPos - (Vector2)transform.position).normalized;
-            Quaternion tossRotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, tossDirection));
+        // Bind camera's center within the circle of radius lookDistance around Player (its local position relative to the Player)
+        camCenter.localPosition = Vector2.ClampMagnitude(mouseRelPos, lookDistance);
+
+        // Upon click, throw pizza
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            // Determine rotation of pizza 
+            Quaternion tossRotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, mouseRelPos.normalized));
 
             // Create pizza
             Instantiate(cheesePizza, pizzaPlatter.position, tossRotation);
