@@ -122,6 +122,25 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &15133657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8668820483674238014, guid: a803c1a44fe88b7418de43d0c7ca8d00, type: 3}
+  m_PrefabInstance: {fileID: 5870892450150540078}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &15133662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15133657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901afa826b918ea41b337a6796705d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pizzaPrefab: {fileID: 6880246501500845904, guid: 6cde3d0c3431c394e91e4e98c8c87793, type: 3}
+  sliceAmount: 6
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,6 +524,10 @@ PrefabInstance:
       propertyPath: lookDistance
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2333673435596943318, guid: a803c1a44fe88b7418de43d0c7ca8d00, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8223789856104251316, guid: a803c1a44fe88b7418de43d0c7ca8d00, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -552,7 +575,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8668820483674238014, guid: a803c1a44fe88b7418de43d0c7ca8d00, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 15133662}
   m_SourcePrefab: {fileID: 100100000, guid: a803c1a44fe88b7418de43d0c7ca8d00, type: 3}
 --- !u!4 &5870892450150540079 stripped
 Transform:

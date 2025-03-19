@@ -20,7 +20,10 @@ public class PlayerController : MonoBehaviour
     public Transform camCenter;
 
     // Pizza to be thrown
-    public GameObject cheesePizza;
+    private PizzaPool pizzaPool;
+
+    // Number of slices from the current pizza that have already been thrown
+    private int slicesUsed;
 
     // Reference to rigidbody for movement
     private Rigidbody2D rb;
@@ -28,6 +31,9 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Initialize slicedUsed, pizzaPool, and rb
+        slicesUsed = 0;
+        pizzaPool = GetComponent<PizzaPool>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -40,14 +46,22 @@ public class PlayerController : MonoBehaviour
         // Bind camera's center within the circle of radius lookDistance around Player (its local position relative to the Player)
         camCenter.localPosition = Vector2.ClampMagnitude(mouseRelPos, lookDistance);
 
-        // Upon click, throw pizza
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        // Upon click, throw pizza if you have some left
+        if ((slicesUsed < pizzaPool.sliceAmount) && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            // Determine rotation of pizza 
-            Quaternion tossRotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, mouseRelPos.normalized));
+            // Determine rotation of pizza (relative to pizzaPlatter)
+            Quaternion tossRotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, (mouseRelPos - (Vector2)pizzaPlatter.localPosition).normalized));
 
-            // Create pizza
-            Instantiate(cheesePizza, pizzaPlatter.position, tossRotation);
+            // Spawn pizza and mark it as used
+            pizzaPool.SpawnPizza(pizzaPlatter.position, tossRotation);
+            slicesUsed++;
+        }
+
+        // DEVTOOL TO REFRESH PIZZA
+        // REPLACE
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            slicesUsed = 0;
         }
     }
 
