@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     // Reference to (invisible) object controlling camera movment
     public Transform camCenter;
 
+    private Camera mainCam;
+
     // Pizza to be thrown
     private PizzaPool pizzaPool;
 
@@ -31,17 +33,24 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Initialize slicedUsed, pizzaPool, and rb
+        // Player starts with no slices used up
         slicesUsed = 0;
+
+        // Get attached PizzaPool script
         pizzaPool = GetComponent<PizzaPool>();
+
+        // Get Player's Rigidbody
         rb = GetComponent<Rigidbody2D>();
+
+        // Get main camera (reducing CPU overhead by calling this once)
+        mainCam = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
         // Get where Player's mouse is (relative to transform.position) and direction in local coordinates
-        Vector2 mouseRelPos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position;
+        Vector2 mouseRelPos = (Vector2)mainCam.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position;
 
         // Bind camera's center within the circle of radius lookDistance around Player (its local position relative to the Player)
         camCenter.localPosition = Vector2.ClampMagnitude(mouseRelPos, lookDistance);

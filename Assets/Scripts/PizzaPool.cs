@@ -28,18 +28,6 @@ public class PizzaPool : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     // Takes a pizza slice out of the PizzaPool,
     // and places it at tossPos (world coords) and rotates it by tossRotation (no rotation points slice upwards)
     public GameObject SpawnPizza(Vector2 tossPos, Quaternion tossRotation)
